@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>closer</title>
+    <meta charset="utf-8" />
+</head>    
+<body>
+
+</body>
+<script>
+    function closer(data){
+        return {
+            get_closer : function (){
+                return data;
+            },
+            set_closer : function (data_){
+                data = data_;
+            }
+        }
+    }
+
+
+    ghost = closer("a");
+    matrix = closer("b");
+
+    alert(ghost.get_closer());
+    alert(matrix.get_closer());
+
+    ghost.set_closer('a2');
+
+
+    alert(ghost.get_closer());
+    alert(matrix.get_closer());
+</script>
+</html>

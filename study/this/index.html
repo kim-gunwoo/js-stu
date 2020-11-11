@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>this</title>
+<head>
+    <script>
+        var funcThis = null;
+
+        /* 전역 프로퍼티 */
+        function Func(){
+            funcThis = this;
+        }
+
+        var o1 = Func();
+        if(funcThis === window){
+            document.write('windows </br>');
+        }
+
+        /* o2 생성자가 만든 프로퍼티 */
+        var o2 = new Func();
+        if(funcThis === o2){
+            document.write('o2 </br>');
+        }
+
+        /* 
+        생성자가 만든 프로퍼티 this 로 사용
+        */
+
+        var o = {};
+        var p = {};
+
+        function fun(){
+            switch(this){
+                case o:
+                document.write('o<br />');
+                break;
+                case p:
+                document.write('p<br />');
+                break;
+                case window:
+                document.write('window<br />');
+                break;
+            }
+        }
+        fun();
+        fun.apply(o);
+        fun.apply(p);
+
+    </script>
+<body>
+    
+</body>
+</html>

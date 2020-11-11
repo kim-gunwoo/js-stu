@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>WEB1 - Welcome</title>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="colors.js"></script>
+  <script src="fetch-master/fetch.js"></script>
+</head>
+
+<body>
+  <h1><a href="index.html">WEB</a></h1>
+  <input id="night_day" type="button" value="night" onclick="nightDayHandler(this);">
+  <ol id='nav'>
+  </ol>
+  
+  <article></article>
+
+  <script>
+    function fn_onclick(sid){
+      fetch(sid).then(function(response){
+        console.log(response);
+        if(response.status === 200){
+          response.text().then(function(text){
+            document.querySelector('article').innerHTML = text;
+          })
+        }else{
+          alert("404");
+        }
+      })
+    }
+    if(window.location.hash){
+        console.log(location.hash);
+        fn_onclick(location.hash.substr(2));
+    }else{
+      fn_onclick('welcome');
+    }
+
+
+    fetch('list').then(function(response){
+        //console.log(response);
+        if(response.status === 200){
+          response.text().then(function(text){
+            let txt = text.split(',');
+            for(var i =0; i< txt.length; i++){
+              let te = txt[i].trim();
+              document.querySelector('#nav').innerHTML += '<li><a href="#!'+te+'" onclick="fn_onclick(\''+te+'\')">'+te+'</a></li>';
+            }
+          })
+        }else{
+          alert("404");
+        }
+      })
+
+  </script>
+</body>
+
+</html>

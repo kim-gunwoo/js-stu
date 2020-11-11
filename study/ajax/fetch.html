@@ -1,0 +1,30 @@
+<html>
+    <script>
+        function fn_fetch(){
+            fetch('css').then(
+                // 익명함수    
+                function(response){
+                    console.log(response);
+                    if(response.status == '404'){
+
+                    }else{
+                        response.text().then(function(text){
+                            alert(text);
+                        })
+                    }
+             })
+        }
+
+        function fn_fetch_2(){
+            fetch('css').then(fn_call_back);
+        }
+
+        function fn_call_back(){
+            alert("callback");
+        }
+    </script>
+    <body>
+        <input type="button" value="fetch" onclick="fn_fetch()">
+    </body>
+
+</html>

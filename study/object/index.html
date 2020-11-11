@@ -1,0 +1,86 @@
+<html>
+    <title></title>
+    <body>
+        <script>
+            //Object.key()
+            var arr = ["a","b","c"];
+            console.log('Object.key(arr)',Object.keys(arr));
+                                            //생성자 ,  함수
+            var obj = {one:"a",two:"b",three:"c"};
+            console.log('Object.key(obj)',Object.keys(obj));
+
+            // Object.prototype.toString()
+            var o = new Object();
+            console.log('o.toString()', o.toString());
+
+            var a = new Array(1,2,3);
+            console.log('a.toString()', a.toString());
+
+            // Object 확장
+            Object.prototype.contian = function(params){
+                for (var key in this){
+                    if(this[key] === params){
+                        return true;
+                    }
+                }
+                return false;
+            }
+            // 객체
+            var b = {'nm':'name','ct':'city'};
+            console.log(b.contian('name'));
+            console.log(b.contian('nm'));
+            // 배열
+            var c =['name','city'];
+            console.log(c.contian('city'));
+
+            // Object 확장 위험 
+            for(var i in b){
+                if(b.hasOwnProperty(i)){
+                    console.log('has ',i);
+                }
+                console.log(i);
+            }
+            for(var i in a){
+                if(a.hasOwnProperty(i)){
+                    console.log('has ',i);
+                }
+                console.log(i);
+            }
+
+            /* 
+            원시데이터 
+            숫자, 문자열 , boolean, null, undefined 
+            래퍼객체
+            Number , String , Boolean , x , x
+            * 
+            
+            /*
+            기존 데이터를 참조할 경우
+            참조 와 복제
+            자바에서 call by value , call by reference 느낌
+            원시데이터일 경우 복제 call by value
+            그 외 객체데이터일 경우 참조 call by reference
+            */
+            var a = 1;
+            function func(b){
+                b =2;
+            }
+            func(a);
+            console.log(a);
+            
+            var a = {'id' : 1};
+            function func(b){
+                b = {'id' :2};
+            }
+            func(a);
+            console.log(a);
+
+            var a = {'id' : 1};
+            function func(b){
+                b.id = 2;
+            }
+            func(a);
+            console.log(a);
+        </script>
+    </body>
+</html>

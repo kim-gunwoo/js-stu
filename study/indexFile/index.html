@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <link href="index.css" rel="stylesheet">
+    <script type="text/javascript" src="index.js"></script>
+    <title>document title</title>
+</head>
+<body>
+    <h1>This works!</h1>
+    <h1 id="title" class="btn">This works!</h1>
+
+    
+
+</body>
+<script type="text/javascript" >
+    const title = document.querySelector("#title");
+    const CLICKED_CLASS = "clicked";
+   
+
+
+    function handleClick(){
+        /*//const currentClassName = title.className;
+        const hasClassName = title.classList.contains(CLICKED_CLASS);
+        //if(currentClassName !== CLICKED_CLASS){
+            //title.className =  CLICKED_CLASS;
+        if(hasClassName){
+            title.classList.remove(CLICKED_CLASS);
+        }else{
+            title.classList.add(CLICKED_CLASS);
+            //title.className =  "";
+        }*/
+        title.classList.toggle(CLICKED_CLASS);
+    }
+
+
+    function init() {
+        title.addEventListener("click",handleClick);
+    }
+    init();
+
+</script>
+</html>
+
+

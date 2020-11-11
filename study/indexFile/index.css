@@ -1,0 +1,20 @@
+body {
+    background-color: peru;
+}
+h1{
+    color: white;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+/*
+#title {
+    color: blue;
+}
+*/
+
+.clicked{
+    color: chartreuse;
+}

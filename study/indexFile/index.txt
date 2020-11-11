@@ -1,0 +1,26 @@
+
+<script type="text/javascript">
+    function a (){
+        
+        //Vanilla Js
+        var r = new XMLHttpRequest();
+            r.open("POST", "path/to/api", true);
+            r.onreadystatechange = function () {
+            if (r.readyState != 4 || r.status != 200) return;
+            alert("Success: " + r.responseText);
+            };
+            r.send("banana=yellow");
+
+        
+        //jQuery	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        $.ajax({
+                type: 'POST',
+                url: "path/to/api",
+                data: "banana=yellow",
+                success: function (data) {
+                    alert("Success: " + data);
+                },
+                });
+
+    }
+</script>
